@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Program76
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Console.Write("Введите сумму покупок за месяц (руб): ");
+
+            if (!decimal.TryParse(Console.ReadLine(), out decimal amount) || amount < 0)
+            {
+                Console.WriteLine("Ошибка: введите неотрицательное число.");
+                return;
+            }
+
+            decimal cashbackRate;
+
+            if (amount <= 10_000)
+            {
+                cashbackRate = 0.01m; // 1%
+            }
+            else if (amount <= 50_000)
+            {
+                cashbackRate = 0.03m; // 3%
+            }
+            else
+            {
+                cashbackRate = 0.05m; // 5%
+            }
+
+            decimal cashback = amount * cashbackRate;
+            Console.WriteLine($"Сумма кешбэка: {cashback:F2} руб.");
+        }
+    }
+}
+    
